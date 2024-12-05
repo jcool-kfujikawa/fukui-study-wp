@@ -1,6 +1,10 @@
 <header class="l-header">
   <div class="l-wrapper l-header__inner">
-    <h1 class="l-header-logo">
+    <?php if (is_front_page()) : ?>
+      <h1 class="l-header-logo">
+    <?php else : ?>
+      <div class="l-header-logo">
+    <?php endif; ?>
       <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header-logo__link">
         <figure class="l-header-logo__image">
           <img
@@ -13,7 +17,11 @@
         <!-- /.l-header-logo__image -->
       </a>
       <!-- /.l-header-logo__link -->
-    </h1>
+    <?php if (is_front_page()) : ?>
+      </h1>
+    <?php else : ?>
+      </div>
+    <?php endif; ?>
     <!-- /.l-header-logo -->
     <nav class="l-header-nav">
       <ul class="l-header-nav__list">
@@ -46,7 +54,7 @@
       <!-- /.l-header-nav__list -->
     </nav>
     <!-- /.l-header-nav -->
-  </div>
+  </・div>
   <!-- /.l-header__inner -->
 </header>
 <!-- /.l-header -->

@@ -38,6 +38,6 @@
     </script>
   </head>
   <body>
-  <main>
-    <div class="l-siteWrapper">
+  <div class="l-siteWrapper">
+    <main>
       <?php echo get_template_part('inc/header'); ?>
