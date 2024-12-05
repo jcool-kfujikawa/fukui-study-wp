@@ -80,7 +80,7 @@
   // Newsのページネーション設定
   function custom_pre_get_posts($query) {
     if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
-      $query->set('posts_per_page', 1);
+      $query->set('posts_per_page', 3);
     }
   }
   add_action('pre_get_posts', 'custom_pre_get_posts');

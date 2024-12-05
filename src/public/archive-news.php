@@ -8,7 +8,7 @@
 
       $news_query = new WP_Query([
         'post_type' => 'news',
-        'posts_per_page' => 1,
+        'posts_per_page' => 3,
         'paged' => $paged
       ]);
 
