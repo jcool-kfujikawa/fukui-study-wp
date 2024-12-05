@@ -14,90 +14,35 @@
     <h2 class="c-heading">Works</h2>
     <!-- /.c-heading -->
     <div class="p-top-works__list">
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works6')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work6</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works6.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works5')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work5</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works5.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works4')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work4</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works4.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works3')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work3</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works3.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works2')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work2</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works2.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
-      <article class="p-top-works__item">
-        <a href="<?php echo esc_url(home_url('/works/#works1')); ?>" class="p-top-works__link">
-          <h3 class="u-visually-hidden">Photo Work1</h3>
-          <div class="p-top-works__thumbnail">
-            <img
-              src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/works/works1.jpg'); ?>"
-              alt=""
-            />
-          </div>
-          <!-- /.p-top-works__thumbnail -->
-        </a>
-        <!-- /.p-top-works__link -->
-      </article>
-      <!-- /.p-top-works__item -->
+      <?php
+      $works_query = new WP_Query(array(
+        'post_type'      => 'works',
+        'posts_per_page' => 6,
+        'orderby'        => 'date',
+        'order'          => 'DESC'
+      ));
+
+      if ($works_query->have_posts()) :
+        while ($works_query->have_posts()) : $works_query->the_post();
+      ?>
+          <article class="p-top-works__item">
+            <a href="<?php echo esc_url(get_permalink()); ?>#works-<?php the_ID(); ?>" class="p-top-works__link">
+              <h3 class="u-visually-hidden"><?php the_title(); ?></h3>
+              <div class="p-top-works__thumbnail">
+                  <?php the_post_thumbnail(); ?>
+              </div>
+              <!-- /.p-top-works__thumbnail -->
+            </a>
+            <!-- /.p-top-works__link -->
+          </article>
+          <!-- /.p-top-works__item -->
+      <?php
+        endwhile;
+        wp_reset_postdata();
+      else :
+      ?>
+        <p>表示する作品がありません。</p>
+      <?php endif; ?>
     </div>
     <!-- /.p-top-works__list -->
     <a href="<?php echo esc_url(home_url('/works')); ?>" class="c-link">See More</a>
@@ -109,52 +54,35 @@
   <div class="l-wrapper">
     <h2 class="c-heading">News</h2>
     <!-- /.c-heading -->
+    <?php
+    $args = array(
+      'post_type'      => 'news',
+      'posts_per_page' => 3,
+      'orderby'        => 'date',
+      'order'          => 'DESC'
+    );
+    $query = new WP_Query($args);
+    ?>
+
     <div class="p-news__list">
-      <article class="p-news__item">
-        <a href="<?php echo esc_url(home_url('/news/sample')); ?>" class="p-news__link">
-          <h3 class="p-news__title">
-            デザイン雑誌「ＸＸＸＸＸＸ
-            Vol.11』に掲載していただきました。
-          </h3>
-          <!-- /.p-news__title -->
-          <time datetime="2024-10-01" class="p-news__date"
-            >2024.10.01</time
-          >
-          <!-- /.p-news__date -->
-        </a>
-        <!-- /.p-news__link -->
-      </article>
-      <!-- /.p-news__item -->
-      <article class="p-news__item">
-        <a href="#" class="p-news__link">
-          <h3 class="p-news__title">
-            ＸＸ月ＸＸ日から写真集「ＸＸＸＸＸＸＸ」の販売を開始します。
-          </h3>
-          <!-- /.p-news__title -->
-          <time datetime="2024-02-11" class="p-news__date"
-            >2024.02.11</time
-          >
-          <!-- /.p-news__date -->
-        </a>
-        <!-- /.p-news__link -->
-      </article>
-      <!-- /.p-news__item -->
-      <article class="p-news__item">
-        <a href="#" class="p-news__link">
-          <h3 class="p-news__title">
-            【イベント開催のお知らせ】テキストテキストテキストテキストテキストテキストテキスト
-          </h3>
-          <!-- /.p-news__title -->
-          <time datetime="2023-09-12" class="p-news__date"
-            >2023.09.12</time
-          >
-          <!-- /.p-news__date -->
-        </a>
-        <!-- /.p-news__link -->
-      </article>
-      <!-- /.p-news__item -->
+      <?php if ($query->have_posts()) : ?>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+          <article class="p-news__item">
+            <a href="<?php the_permalink(); ?>" class="p-news__link">
+              <h3 class="p-news__title"><?php the_title(); ?></h3>
+              <time datetime="<?php echo get_the_date('Y-m-d'); ?>" class="p-news__date">
+                <?php echo get_the_date('Y.m.d'); ?>
+              </time>
+            </a>
+          </article>
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+      <?php else : ?>
+        <p class="p-news__no-items">現在、ニュースはありません。</p>
+      <?php endif; ?>
     </div>
     <!-- /.p-news__list -->
+
     <a href="<?php echo esc_url(home_url('/news')); ?>" class="c-link">See More</a>
     <!-- /.c-link -->
   </div>

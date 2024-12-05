@@ -18,6 +18,27 @@
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  position: relative;
+
+  span {
+    display: contents;
+  }
+
+  .wpcf7-not-valid-tip {
+    display: block;
+    grid-area: 2 / 2 / 3 / 3;
+
+    @include MQ(md) {
+      grid-area: 3 / 1 / 4 / 2;
+    }
+  }
+  
+  .wpcf7-spinner {
+    display: block;
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+  }
 }
 
 .p-contact__container {
