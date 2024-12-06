@@ -4,7 +4,7 @@
     <h1 class="c-heading">News</h1>
     <div class="p-news__list">
       <?php
-      $paged = max(3, get_query_var('paged', 3));
+      $paged = max(1, get_query_var('paged', 1));
 
       $news_query = new WP_Query([
         'post_type' => 'news',
