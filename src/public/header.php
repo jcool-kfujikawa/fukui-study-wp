@@ -42,11 +42,10 @@
     <main>
     <header class="l-header">
       <div class="l-wrapper l-header__inner">
-        <?php if (is_front_page()) : ?>
-          <h1 class="l-header-logo">
-        <?php else : ?>
-          <div class="l-header-logo">
-        <?php endif; ?>
+        <?php
+          $logoTag = is_front_page() ? 'h1' : 'div';
+        ?>
+        <<?php echo $logoTag; ?> class="l-header-logo">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="l-header-logo__link">
             <figure class="l-header-logo__image">
               <img
@@ -59,11 +58,7 @@
             <!-- /.l-header-logo__image -->
           </a>
           <!-- /.l-header-logo__link -->
-        <?php if (is_front_page()) : ?>
-          </h1>
-        <?php else : ?>
-          </div>
-        <?php endif; ?>
+        </<?php echo $logoTag; ?>>
         <!-- /.l-header-logo -->
         <nav class="l-header-nav">
           <ul class="l-header-nav__list">
